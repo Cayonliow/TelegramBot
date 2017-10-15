@@ -19,33 +19,119 @@ machine = TocMachine(
     states=[
         'waiting',
         'menu',
-        'playing'
+        'playing',
+        'male',
+        'female',
+        'follow',
+        'deny',
+        'Itachi',
+        'LeiQie',
+        'ShenWei',
+        'Kakuzu',
+        'Zabuza',
+        'Hoshigaki',
+        'Death',
+        'Continue'
     ],
     transitions=[
         {
             'trigger': 'advance',
             'source': 'waiting',
             'dest': 'menu',
-            'conditions': 'going_to_menu'
+            'conditions': 'is_going_to_menu'
         },
         {
             'trigger': 'advance',
             'source': 'waiting',
             'dest': 'playing',
-            'conditions': 'going_to_playing'
+            'conditions': 'is_going_to_playing'
         },
         {
-            'trigger': 'go_back',
+            'trigger': 'advance',
             'source': 'menu',
             'dest': 'waiting',
-            'conditions': 'back_waiting'
+            'conditions': 'is_going_back_waiting'
         },
         {
-            'trigger': 'go_back',
+            'trigger': 'advance',
             'source': 'playing',
             'dest': 'waiting',
-            'conditions': 'back_waiting'
+            'conditions': 'is_going_back_waiting'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'playing',
+            'dest': 'male',
+            'conditions': 'is_going_to_male'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'male',
+            'dest': 'deny',
+            'conditions': 'is_going_to_deny'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'male',
+            'dest': 'follow',
+            'conditions': 'is_going_to_follow'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'follow',
+            'dest': 'Itachi',
+            'conditions': 'is_going_to_Itachi'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'follow',
+            'dest': 'Hoshigaki',
+            'conditions': 'is_going_to_Hoshigaki'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'Itachi',
+            'dest': 'LeiQie',
+            'conditions': 'is_going_to_LeiQie'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'Itachi',
+            'dest': 'ShenWei',
+            'conditions': 'is_going_to_ShenWei'
+        },
+        {
+            'trigger': 'advance',
+            'source': [
+                'Hoshigaki',
+                'LeiQie'
+            ],
+            'dest': 'Death',
+            'conditions': 'is_going_to_Death'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'deny',
+            'dest': 'Kakuzu',
+            'conditions': 'is_going_to_Kakuzu'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'deny',
+            'dest': 'Zabuza',
+            'conditions': 'is_going_to_Zabuza'
+        },
+        {
+            'trigger': 'advance',
+            'source': [
+                'ShenWei',
+                'Kakuzu',
+                'Zabuza'
+            ],
+            'dest': 'Continue',
+            'conditions': 'is_going_to_Continue'
         }
+
     ],
     initial='waiting',
     auto_transitions=False,
@@ -77,6 +163,7 @@ def _set_webhook():
 def webhook_handler():
     update = telegram.Update.de_json(request.get_json(force=True), bot)
     machine.advance(update)
+    print(machine.state)
     return 'ok'
 
 
