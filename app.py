@@ -48,13 +48,22 @@ machine = TocMachine(
         },
         {
             'trigger': 'advance',
-            'source': 'menu',
-            'dest': 'waiting',
-            'conditions': 'is_going_back_waiting'
-        },
-        {
-            'trigger': 'advance',
-            'source': 'playing',
+            'source':[
+                'menu',
+                'playing',
+                'male',
+                'female',
+                'follow',
+                'deny',
+                'Itachi',
+                'LeiQie',
+                'ShenWei',
+                'Kakuzu',
+                'Zabuza',
+                'Hoshigaki',
+                'Death',
+                'Continue'
+            ],
             'dest': 'waiting',
             'conditions': 'is_going_back_waiting'
         },
@@ -163,7 +172,11 @@ def _set_webhook():
 def webhook_handler():
     update = telegram.Update.de_json(request.get_json(force=True), bot)
     machine.advance(update)
+    print('NOW STATE:')
     print(machine.state)
+    #print(update.update_id)
+    #print('\nsticker:')
+    #print(update.message.sticker.file_id)
     return 'ok'
 
 
