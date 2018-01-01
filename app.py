@@ -10,7 +10,7 @@ from fsm2 import TocMachine2
 import requests
 import re
 
-API_TOKEN = '463872076:AAGhNBC14QbV7kLw2M8sTQEdnvUSfmaDduo'
+API_TOKEN = 'your api token'
 #WEBHOOK_URL = _get_ngrok_url()
 global reply_markup
 

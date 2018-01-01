@@ -86,7 +86,7 @@ class TocMachine2(GraphMachine):
         reply_markup2 = telegram.ReplyKeyboardMarkup([['我要問問題']])
         print(update.message.text)
         print('in check')
-        firebase = firebaseAPI.FirebaseApplication('https://botbot-c8113.firebaseio.com', None)
+        firebase = firebaseAPI.FirebaseApplication('https://yourbotfirebaseAPI.firebaseio.com', None)
         result = firebase.get('/',None)
         #print(result)
         #s1=unicode(update.message.text, "utf-8")
@@ -98,7 +98,7 @@ class TocMachine2(GraphMachine):
 
     def on_enter_check_place(self, update):
         reply_markup2 = telegram.ReplyKeyboardMarkup([['我要問問題']])
-        key='AIzaSyADGAt01TSM-nfCNSPHBQvBvwuHq1ZmuIg'
+        key='your key'
         s_place = 'https://maps.googleapis.com/maps/api/place/nearbysearch/xml?location='+str(update.message.location.latitude)+','+str(update.message.location.longitude)+'&radius=500&type=restaurant&key='+key
         print(s_place)
         page = get_web_page(s_place)
