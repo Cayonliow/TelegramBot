@@ -13,6 +13,8 @@ In addition, you can also ask the bot whether there are ninja nearby you. This c
 
 The currency rate of countries in glocal can be checked buy asking the currency in the world. THe currency is extractly the currency of Japan Yen.
 
+To make better user experience, you need not to text, and only buttons with choices you have to click.
+
 ## Telegram Stickers
 My stickers pack = [yoyoNaruto](https://t.me/addstickers/yoyoNaruto)
 ![](https://i.imgur.com/2dU4Plo.png)
@@ -43,18 +45,18 @@ run:
                 *    RPG FSM
                         *  State with story plot
                         *  `http://localhost:5000/show-fsm`
-                        *  [oringal graph](https://i.imgur.com/E2RvqQ3.jpg)
+                        *  [oringal graph](https://i.imgur.com/jXhnAoD.jpg)
 
                 *    ASKIMG FSM
                         *  State with dynamic work
     
                         *  `http://localhost:5000/show-fsm2`
-                        *  [oringal graph](https://i.imgur.com/3A4w1eK.png)
+                        *  [oringal graph](https://i.imgur.com/AGPW9ff.png)
 
-
-![](https://i.imgur.com/E2RvqQ3.jpg)
-
-![](https://i.imgur.com/3A4w1eK.png)
+fsm1:
+![](https://i.imgur.com/jXhnAoD.jpg)
+fsm2:
+![](https://i.imgur.com/AGPW9ff.png)
 
 
 ## Tool Studies
