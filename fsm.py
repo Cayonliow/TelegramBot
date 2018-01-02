@@ -149,7 +149,6 @@ class TocMachine(GraphMachine):
         global reply_markup
         reply_markup = telegram.ReplyKeyboardMarkup(['Get it'])
         update.message.reply_text("There is a Telegram Echo bot with the theme of anime of Naruto\nEnjoy the RPG story!\n\nAuthor:Cayon Liow Keei Yann\n")
-        update.message.reply_text("What can I help you?\n")
         update.message.reply_sticker(text='CAADBQADAQEAAvjGxQp623fRgMRgIAI',reply_markup=reply_markup)
 
     def on_enter_playing(self, update):
@@ -259,7 +258,7 @@ class TocMachine(GraphMachine):
 
     def on_enter_denym(self, update):
         global reply_markup
-        reply_markup = telegram.ReplyKeyboardMarkup([['鳴人你是說要去救我愛羅嗎？'],['鳴人你是說要趕快趕到草忍村的天地橋，等待大蛇丸身邊的臥底會出現嗎？'],['重玩','我要問問題']])
+        reply_markup = telegram.ReplyKeyboardMarkup([['鳴人你是說要去救我愛羅嗎？'],['鳴人你是說要到天地橋，等待大蛇丸身邊的臥底出現嗎？'],['重玩','我要問問題']])
         update.message.reply_sticker('CAADBQADJgADmsj5D3B58IgX0bkqAg')
         update.message.reply_text('鳴人：你發瘋了啊！都什麼時候了還在鬧別扭！我們快來不及了！')
         update.message.reply_text(text='我：來不及。。這是哪裏的劇情。。快想起來啊！不管啦！先掰一個好了',reply_markup=reply_markup)

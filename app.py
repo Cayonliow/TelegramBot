@@ -360,7 +360,15 @@ machine2 = TocMachine2(
         }, 
         {
             'trigger': 'advance',
-            'source':'wait_to_ask',
+            'source':[
+                'wait_to_ask',
+                'ask_character',
+                'ask_rate',
+                'ask_place',
+                'check_character',
+                'check_place',
+                'check_rate'
+            ],
             'dest': 'empty2',
             'conditions': 'is_going_back_empty2'
         }
@@ -396,10 +404,10 @@ def webhook_handler():
     update = telegram.Update.de_json(request.get_json(force=True), bot)
     update.bot = bot
     machine.advance(update)
-    print('NOW STATE:')
+    print('NOW STATE(1):')
     print(machine.state)
     machine2.advance(update)
-    print('NOW STATE:')
+    print('NOW STATE(2):')
     print(machine2.state)
     #print(update.update_id)
     print('\nlocation:')
