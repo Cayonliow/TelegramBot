@@ -55,9 +55,9 @@ machine = TocMachine(
     transitions=[
         {
             'trigger': 'advance',
-            'source': 'empty',
+            'source': 'waiting',
             'dest': 'waiting',
-            'conditions': 'is_going_to_waiting'
+            'conditions': 'is_going_to_waiting_from_waiting'
         },
         {
             'trigger': 'advance',
@@ -286,7 +286,7 @@ machine = TocMachine(
         }
 
     ],
-    initial='empty',
+    initial='waiting',
     auto_transitions=False,
     show_conditions=True,
 )

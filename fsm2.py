@@ -98,7 +98,7 @@ class TocMachine2(GraphMachine):
         reply_markup2 = telegram.ReplyKeyboardMarkup([['我要問問題'],['重玩'],['我懂了，我要繼續玩']])
         print(update.message.text)
         print('in check')
-        firebase = firebaseAPI.FirebaseApplication('https://yourbotfirebaseAPI.firebaseio.com', None)
+        firebase = firebaseAPI.FirebaseApplication('https://yourbot.firebaseio.com', None)
         result = firebase.get('/',None)
         #print(result)
         #s1=unicode(update.message.text, "utf-8")

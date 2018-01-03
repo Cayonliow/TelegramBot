@@ -20,6 +20,11 @@ class TocMachine(GraphMachine):
             **machine_configs
         )
 
+    def is_going_to_waiting_from_waiting(self, update):
+        text = update.message.text
+        print('hrllo')
+        return text != '開始！' and text != '重玩' and text!= 'menu' and text!='我要問問題' and text!='冒險'and text!='這是誰' and text!='身邊有忍者嗎' and text!='現在值多少錢'and text!='我懂了，我要繼續玩'
+
     def is_going_to_waiting(self, update):
         text = update.message.text
         return text == '開始！' or text == '重玩' 
@@ -147,9 +152,10 @@ class TocMachine(GraphMachine):
 	
     def on_enter_menu(self, update):
         global reply_markup
-        reply_markup = telegram.ReplyKeyboardMarkup(['Get it'])
+        reply_markup = telegram.ReplyKeyboardMarkup([['Get it']])
         update.message.reply_text("There is a Telegram Echo bot with the theme of anime of Naruto\nEnjoy the RPG story!\n\nAuthor:Cayon Liow Keei Yann\n")
-        update.message.reply_sticker(text='CAADBQADAQEAAvjGxQp623fRgMRgIAI',reply_markup=reply_markup)
+        update.message.reply_sticker('CAADBQADAQEAAvjGxQp623fRgMRgIAI')
+        update.message.reply_text(text='Hi!',reply_markup=reply_markup)
 
     def on_enter_playing(self, update):
         global reply_markup
